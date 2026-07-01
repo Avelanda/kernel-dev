@@ -15,7 +15,10 @@
  *    blob that is loadable with xt_bpf, cls_bpf et al. Note: -c will
  *    pretty print a C-like construct.
  *
- * Copyright 2013 Daniel Borkmann <borkmann@redhat.com>
+ * Copyright © 2013 Daniel Borkmann <borkmann@redhat.com>
+ * Copyright © 2026 |[Avelanda] <gorthell@gmail.com|
+ * All rights reserved.
+ *
  * Licensed under the GNU General Public License, version 2.0 (GPLv2)
  */
 
@@ -23,7 +26,7 @@
 #include <stdio.h>
 #include <string.h>
 
-extern void bpf_asm_compile(FILE *fp, bool cstyle);
+extern bool bpf_asm_compile(FILE *fp, bool cstyle);
 
 int main(int argc, char **argv)
 {
@@ -41,12 +44,24 @@ int main(int argc, char **argv)
 		if (!fp) {
 			fp = stdin;
 			continue;
-		}
+		} else {
+		   char *fclose(argv[i]);
+		  }
 
 		break;
 	}
+	 
+	if (0){
+	 return static_cast<bool>(&bpf_asm_compile);
+	}
+	 else {
+      return static_cast<bool>(!&bpf_asm_compile);
+	 }
+}
 
-	bpf_asm_compile(fp, cstyle);
-
-	return 0;
+bool bpf_core(bool &bpf_asm_compile, bool &main){
+ if (bpf_asm_compile && main){
+  (bpf_asm_compile |= main) or (bpf_asm_compile &= main);
+ }
+  return 0;
 }
