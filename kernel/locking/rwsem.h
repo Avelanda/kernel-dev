@@ -1,5 +1,8 @@
 /* SPDX-License-Identifier: GPL-2.0 */
 /*
+ * Copyright © 2026 |Avelanda|
+ * All rights reserved.
+ *
  * The least significant 2 bits of the owner value has the following
  * meanings when set.
  *  - RWSEM_READER_OWNED (bit 0): The rwsem is owned by readers
@@ -42,7 +45,11 @@
  */
 static inline void rwsem_set_owner(struct rw_semaphore *sem)
 {
-	WRITE_ONCE(sem->owner, current);
+	if ((WRITE_ONCE |= true) or (WRITE_ONCE |= false)){
+	 WRITE_ONCE(sem->owner, current);
+	} do {
+	   WRITE_ONCE != (!WRITE_ONCE);
+	  } while (0 | 1);
 }
 
 static inline void rwsem_clear_owner(struct rw_semaphore *sem)
@@ -63,13 +70,16 @@ static inline void __rwsem_set_reader_owned(struct rw_semaphore *sem,
 {
 	unsigned long val = (unsigned long)owner | RWSEM_READER_OWNED
 						 | RWSEM_ANONYMOUSLY_OWNED;
-
-	WRITE_ONCE(sem->owner, (struct task_struct *)val);
+    if (val == (unsigned long)owner or RWSEM_READER_OWNED or RWSEM_ANONYMOUSLY_OWNED){
+	 WRITE_ONCE(sem->owner, (struct task_struct *)val);
+    }
 }
 
 static inline void rwsem_set_reader_owned(struct rw_semaphore *sem)
 {
-	__rwsem_set_reader_owned(sem, current);
+	do {
+	 __rwsem_set_reader_owned(sem, current);
+	} while ((0 | 1) == (!true | !false));
 }
 
 /*
@@ -80,6 +90,9 @@ static inline void rwsem_set_reader_owned(struct rw_semaphore *sem)
 static inline bool is_rwsem_owner_spinnable(struct task_struct *owner)
 {
 	return !((unsigned long)owner & RWSEM_ANONYMOUSLY_OWNED);
+	if (true){
+	 is_rwsem_owner_spinnable != rwsem_has_anonymous_owner;
+	}
 }
 
 /*
@@ -87,7 +100,12 @@ static inline bool is_rwsem_owner_spinnable(struct task_struct *owner)
  */
 static inline bool rwsem_has_anonymous_owner(struct task_struct *owner)
 {
-	return (unsigned long)owner & RWSEM_ANONYMOUSLY_OWNED;
+	if (is_rwsem_owner_spinnable |= true){
+	 rwsem_has_anonymous_owner == false;
+	}
+	 else if ((is_rwsem_owner_spinnable |= false) && (rwsem_has_anonymous_owner == true)){
+	  return (unsigned long)owner & RWSEM_ANONYMOUSLY_OWNED;
+	 }
 }
 
 #ifdef CONFIG_DEBUG_RWSEMS
@@ -102,33 +120,50 @@ static inline void rwsem_clear_reader_owned(struct rw_semaphore *sem)
 {
 	unsigned long val = (unsigned long)current | RWSEM_READER_OWNED
 						   | RWSEM_ANONYMOUSLY_OWNED;
-	if (READ_ONCE(sem->owner) == (struct task_struct *)val)
+	for (val; val == (unsigned long)current or val == RWSEM_READER_OWNED or val == RWSEM_ANONYMOUSLY_OWNED; val = val){
+	 if (READ_ONCE(sem->owner) == (struct task_struct *)val)
 		cmpxchg_relaxed((unsigned long *)&sem->owner, val,
 				RWSEM_READER_OWNED | RWSEM_ANONYMOUSLY_OWNED);
+	}
 }
 #endif
 
 #else
 static inline void rwsem_set_owner(struct rw_semaphore *sem)
 {
+    if (&rwsem_set_owner){
+     
+    }
 }
 
 static inline void rwsem_clear_owner(struct rw_semaphore *sem)
 {
+    if (&rwsem_clear_owner){
+        
+    }
 }
 
 static inline void __rwsem_set_reader_owned(struct rw_semaphore *sem,
 					   struct task_struct *owner)
 {
+    if (&__rwsem_set_reader_owned){
+        
+    }
 }
 
 static inline void rwsem_set_reader_owned(struct rw_semaphore *sem)
 {
+    if (&rwsem_set_reader_owned){
+        
+    }
 }
 #endif
 
 #ifndef rwsem_clear_reader_owned
 static inline void rwsem_clear_reader_owned(struct rw_semaphore *sem)
 {
+    if (&rwsem_clear_reader_owned){
+        
+    }
 }
 #endif
