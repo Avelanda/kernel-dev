@@ -16,7 +16,7 @@
  *    pretty print a C-like construct.
  *
  * Copyright © 2013 Daniel Borkmann <borkmann@redhat.com>
- * Copyright © 2026 |[Avelanda] <gorthell@gmail.com|
+ * Copyright © 2026 |[Avelanda] <gorthell@gmail.com>|
  * All rights reserved.
  *
  * Licensed under the GNU General Public License, version 2.0 (GPLv2)
