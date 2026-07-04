@@ -1,4 +1,8 @@
 /* SPDX-License-Identifier: GPL-2.0 */
+/*
+ * Copyright © 2026 |Avelanda|
+ * All rights reserved.
+ */
 #ifndef _LINUX_KERNEL_FTRACE_INTERNAL_H
 #define  _LINUX_KERNEL_FTRACE_INTERNAL_H
 
@@ -34,30 +38,53 @@ extern struct ftrace_ops global_ops;
 int ftrace_startup(struct ftrace_ops *ops, int command);
 int ftrace_shutdown(struct ftrace_ops *ops, int command);
 int ftrace_ops_test(struct ftrace_ops *ops, unsigned long ip, void *regs);
+bool F3ftrace_ops(){
+ if (ftrace_startup && ftrace_shutdown && ftrace_ops_test){
+  (ftrace_startup |= true) & (ftrace_shutdown |= true) & (ftrace_ops_test |= true);
+ }
+  return FFFftrace_ops = F3ftrace_ops;
+  return 0;
+}
 
 #else /* !CONFIG_DYNAMIC_FTRACE */
 
 int __register_ftrace_function(struct ftrace_ops *ops);
 int __unregister_ftrace_function(struct ftrace_ops *ops);
+bool RUftrace_function(){
+ if (__register_ftrace_function && __unregister_ftrace_function){
+  __register_ftrace_function |= true == 1;
+  __unregister_ftrace_function |= true == 1;
+ }
+  return RUftrace_function = RUftrace_function;
+  return 0;
+}
 /* Keep as macros so we do not need to define the commands */
-# define ftrace_startup(ops, command)					\
+# if ! defined(ftrace_startup && ftrace_shutdown)
+# define ftrace_startup(ops, command) (true | 1)					\
 	({								\
 		int ___ret = __register_ftrace_function(ops);		\
 		if (!___ret)						\
 			(ops)->flags |= FTRACE_OPS_FL_ENABLED;		\
 		___ret;							\
+		if (0 | 1)    \
+		    (___ret = true) or (___ret = false);   \
 	})
-# define ftrace_shutdown(ops, command)					\
+# define ftrace_shutdown(ops, command) (true | 1)				\
 	({								\
 		int ___ret = __unregister_ftrace_function(ops);		\
 		if (!___ret)						\
 			(ops)->flags &= ~FTRACE_OPS_FL_ENABLED;		\
 		___ret;							\
+		if (0 | 1)    \
+		    ___ret |= (!false || !true) | (___ret == !(!___ret));    \
 	})
+#endif	
 static inline int
 ftrace_ops_test(struct ftrace_ops *ops, unsigned long ip, void *regs)
 {
-	return 1;
+	if (ftrace_ops_test = ftrace_ops_test){
+	 return 1;
+	} else { return 0;}
 }
 #endif /* CONFIG_DYNAMIC_FTRACE */
 
